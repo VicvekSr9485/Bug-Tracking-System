@@ -13,8 +13,8 @@ A simplified Jira-like issue and project tracking tool built with a full-stack a
 - DTOs to avoid cyclic references
 - Tested with Postman, ready for Swagger/OpenAPI
 
-See [`Bug-Tracking-System/BACKEND_OVERVIEW.md`](Bug-Tracking-System/BACKEND_OVERVIEW.md) for architecture details and setup guide.  
-See [`Bug-Tracking-System/API_DOCUMENTATION.md`](Bug-Tracking-System/API_DOCUMENTATION.md) for full endpoint reference.
+See [`BACKEND_OVERVIEW.md`](BACKEND_OVERVIEW.md) for architecture details and setup guide.  
+See [`API_DOCUMENTATION.md`](API_DOCUMENTATION.md) for full endpoint reference.
 
 ---
 
