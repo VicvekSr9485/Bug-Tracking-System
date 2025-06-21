@@ -1,4 +1,4 @@
-# 🐞 Mini Jira - Bug Tracking System
+# 🐞 Bug Tracking System
 
 A simplified Jira-like issue and project tracking tool built with a full-stack architecture.
 
