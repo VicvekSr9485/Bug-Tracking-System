@@ -11,6 +11,6 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jdk
 WORKDIR /app
 
-COPY --from=builder /build/backend/target/bug-tracking-system-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=builder /build/backend/target/bugtracker-0.0.1-SNAPSHOT.jar app.jar
 
 CMD ["java", "-jar", "app.jar"]
