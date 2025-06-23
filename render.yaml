@@ -3,7 +3,6 @@ services:
     name: bug-tracker-backend
     runtime: docker
     dockerfilePath: backend/Dockerfile
-    buildFilterPath: backend
     plan: free
     autoDeploy: true
     envVars:
