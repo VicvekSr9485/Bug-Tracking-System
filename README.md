@@ -18,9 +18,8 @@ See [`API_DOCUMENTATION.md`](API_DOCUMENTATION.md) for full endpoint reference.
 
 ---
 
-### Frontend (Coming Soon)
-- Planned: React
-- Features will include:
+- Framework: React
+- Features include:
   - JWT-based login and protected routes
   - Project and issue dashboards
   - Create/update/delete operations with live API connection
