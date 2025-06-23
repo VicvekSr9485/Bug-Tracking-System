@@ -1,4 +1,3 @@
-// src/components/Navbar.tsx
 import {
   Button,
   Navbar,

@@ -1,4 +1,3 @@
-// src/pages/Landing.tsx
 import AppNavbar from "../components/Navbar";
 import AppFooter from "../components/Footer";
 import HeroSection from "../components/HeroSection";

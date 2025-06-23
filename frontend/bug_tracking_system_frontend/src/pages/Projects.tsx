@@ -1,4 +1,3 @@
-// src/pages/Projects.tsx
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { HiOutlineFolderOpen, HiOutlinePlus } from "react-icons/hi";
