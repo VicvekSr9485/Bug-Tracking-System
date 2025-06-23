@@ -3,7 +3,6 @@ services:
     name: bug-tracker-backend
     runtime: docker
     buildCommand: "cd backend && ./mvnw clean package -DskipTests"
-    startCommand: "cd backend && java -jar target/bug-tracking-system-0.0.1-SNAPSHOT.jar"
     plan: free
     autoDeploy: true
     envVars:
