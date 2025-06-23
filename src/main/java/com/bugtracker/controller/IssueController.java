@@ -73,6 +73,22 @@ public class IssueController {
         );
     }
 
+    @GetMapping("/{id}")
+    public IssueResponseDTO getIssueById(@PathVariable Long id) {
+        Issue issue = issueRepository.findById(id).orElseThrow();
+
+        return new IssueResponseDTO(
+            issue.getId(),
+            issue.getTitle(),
+            issue.getDescription(),
+            issue.getStatus(),
+            issue.getPriority(),
+            issue.getProject() != null ? issue.getProject().getId() : null,
+            issue.getProject() != null ? issue.getProject().getName() : null,
+            issue.getAssignee() != null ? issue.getAssignee().getId() : null,
+            issue.getAssignee() != null ? issue.getAssignee().getUsername() : null
+        );
+    }
     @PutMapping("/{id}")
     public IssueResponseDTO updateIssue(@PathVariable Long id, @RequestBody IssueRequestDTO dto) {
         Issue issue = issueRepository.findById(id).orElseThrow();

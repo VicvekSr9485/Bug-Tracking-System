@@ -1,22 +1,23 @@
 package com.bugtracker.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.bugtracker.security.JwtUtil;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.HttpStatus;
-import java.util.Optional;
+
 import com.bugtracker.dto.JwtResponseDTO;
 import com.bugtracker.dto.LoginRequestDTO;
-
 import com.bugtracker.dto.UserRequestDTO;
 import com.bugtracker.model.User;
 import com.bugtracker.repository.UserRepository;
+import com.bugtracker.security.JwtUtil;
 
 @RestController
 @RequestMapping("/auth")
@@ -61,7 +62,7 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
     }
 
-        String token = jwtUtil.generateToken(user.getUsername());
+        String token = jwtUtil.generateToken(user.getUsername(), user.getEmail());
         return ResponseEntity.ok(new JwtResponseDTO(token));
     }
 

@@ -1,22 +1,33 @@
 package com.bugtracker.security;
 
-import io.jsonwebtoken.*;
-import io.jsonwebtoken.security.Keys;
-import io.jsonwebtoken.SignatureAlgorithm;
+import java.security.Key;
+import java.util.Base64;
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.security.Key;
-import java.util.Date;
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtUtil {
 
-    private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-    private final long EXPIRATION_MS = 86400000; // 1 day
+    private final Key key;
 
-    public String generateToken(String username) {
+    public JwtUtil(@Value("${JWT_SECRET}") String secret) {
+        byte[] decoded = Base64.getDecoder().decode(secret);
+        this.key = Keys.hmacShaKeyFor(decoded);
+    }
+
+    private final long EXPIRATION_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+
+    // ✅ Updated to accept and embed email
+    public String generateToken(String username, String email) {
         return Jwts.builder()
                 .setSubject(username)
+                .claim("email", email)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_MS))
                 .signWith(key)

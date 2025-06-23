@@ -4,7 +4,9 @@ import { jwtDecode } from "jwt-decode";
 
 interface DecodedToken {
   username: string;
-  // Add more fields if your JWT contains them (e.g., roles, exp)
+  email: string;
+  iat: number;
+  exp: number;
 }
 
 interface AuthContextType {

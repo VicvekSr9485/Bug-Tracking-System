@@ -20,7 +20,7 @@ export default function Login() {
     try {
       const response = await api.post("/auth/login", form);
       const data = response.data as { token: string };
-      login(data.token); // ✅ use context instead of localStorage manually
+      login(data.token);
       navigate("/dashboard");
     } catch (err: any) {
       setError(
@@ -37,10 +37,16 @@ export default function Login() {
       </div>
 
       {/* Right side - Form */}
-      <div className="w-full md:w-1/2 flex items-center justify-center p-8">
+      <div className="w-full md:w-1/2 flex items-center justify-center p-8 relative">
+        <div className="absolute top-3 left-4">
+          <Link to="/" className="text-sm text-blue-600 hover:underline">
+            ← Home
+          </Link>
+        </div>
+
         <div className="max-w-md w-full">
           <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-            Login to BugTrackr
+            Login to BugTracker
           </h2>
 
           {error && (

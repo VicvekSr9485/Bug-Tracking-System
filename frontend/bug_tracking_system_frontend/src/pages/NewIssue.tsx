@@ -7,21 +7,29 @@ interface Project {
   name: string;
 }
 
+interface User {
+  id: number;
+  username: string;
+}
+
 export default function NewIssue() {
   const navigate = useNavigate();
   const [projects, setProjects] = useState<Project[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [form, setForm] = useState({
     title: "",
     description: "",
     status: "Open",
     priority: "Medium",
     projectId: "",
+    assigneeId: "",
   });
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "Create Issue | BugTracker";
+    document.title = "Create Issue | BugTrackr";
     fetchProjects();
+    fetchUsers();
   }, []);
 
   const fetchProjects = async () => {
@@ -33,7 +41,20 @@ export default function NewIssue() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const fetchUsers = async () => {
+    try {
+      const res = await api.get("/api/users");
+      setUsers(res.data as User[]);
+    } catch (err) {
+      setError("Failed to load users.");
+    }
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -41,8 +62,8 @@ export default function NewIssue() {
     e.preventDefault();
     setError("");
 
-    if (!form.title || !form.projectId) {
-      setError("Title and project are required.");
+    if (!form.title || !form.projectId || !form.assigneeId) {
+      setError("Title, project and assignee are required.");
       return;
     }
 
@@ -53,6 +74,7 @@ export default function NewIssue() {
         priority: form.priority,
         status: form.status,
         projectId: parseInt(form.projectId),
+        assigneeId: parseInt(form.assigneeId),
       });
 
       navigate("/issues");
@@ -118,6 +140,21 @@ export default function NewIssue() {
           {projects.map((project) => (
             <option key={project.id} value={project.id}>
               {project.name}
+            </option>
+          ))}
+        </select>
+
+        <select
+          name="assigneeId"
+          value={form.assigneeId}
+          onChange={handleChange}
+          className="w-full border p-3 rounded"
+          required
+        >
+          <option value="">-- Assign To --</option>
+          {users.map((user) => (
+            <option key={user.id} value={user.id}>
+              {user.username}
             </option>
           ))}
         </select>

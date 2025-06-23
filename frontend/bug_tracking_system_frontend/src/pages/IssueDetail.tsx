@@ -27,10 +27,14 @@ export default function IssueDetail() {
 
   const fetchIssue = async () => {
     try {
-      const response = await api.get(`/api/issues/${id}`);
-      setIssue(response.data as IssueDetail);
-    } catch (err) {
-      setError("Failed to fetch issue. Please try again.");
+      const res = await api.get(`/api/issues/${id}`);
+      setIssue(res.data as IssueDetail);
+    } catch (err: any) {
+      if (err.response?.status === 401 || err.response?.status === 403) {
+        setError("Access denied. Please login again.");
+      } else {
+        setError("Failed to fetch issue. Please try again.");
+      }
     } finally {
       setLoading(false);
     }

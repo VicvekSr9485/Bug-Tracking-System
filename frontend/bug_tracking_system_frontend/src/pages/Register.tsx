@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import api from "../api/axios";
 
 const Register = () => {
@@ -32,7 +32,17 @@ const Register = () => {
         backgroundSize: "cover",
       }}
     >
-      <div className="w-full max-w-md bg-white p-8 rounded shadow">
+      <div className="w-full max-w-md bg-white p-8 rounded shadow relative">
+        {/* Home link */}
+        <div className="absolute top-3 left-4">
+          <Link
+            to="/"
+            className="text-sm text-blue-600 hover:underline"
+          >
+            ← Home
+          </Link>
+        </div>
+
         <h2 className="text-2xl font-bold text-center mb-6">Register</h2>
 
         {error && (

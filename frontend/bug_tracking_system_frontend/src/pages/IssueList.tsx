@@ -46,6 +46,11 @@ export default function Issues() {
     <div className="p-6 bg-gray-50 dark:bg-gray-900 min-h-screen">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-3xl font-bold text-gray-800 dark:text-white">All Issues</h2>
+        <div>
+          <Link to="/dashboard" className="text-sm text-blue-600 hover:underline">
+            ← Back to Dashboard
+          </Link>
+        </div>
         <Link
           to="/issues/new"
           className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"

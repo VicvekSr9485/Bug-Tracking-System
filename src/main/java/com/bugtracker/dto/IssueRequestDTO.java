@@ -1,11 +1,15 @@
 package com.bugtracker.dto;
 
+import jakarta.validation.constraints.NotNull;
+
 public class IssueRequestDTO {
     private String title;
     private String description;
     private String status;
     private String priority;
+    @NotNull
     private Long assigneeId;
+    @NotNull
     private Long projectId;
 
     public String getTitle() { return title; }
