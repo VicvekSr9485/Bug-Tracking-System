@@ -23,7 +23,6 @@ public class JwtUtil {
 
     private final long EXPIRATION_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
 
-    // ✅ Updated to accept and embed email
     public String generateToken(String username, String email) {
         return Jwts.builder()
                 .setSubject(username)
