@@ -116,12 +116,10 @@ cd Bug-Tracking-System
 
 ---
 
-## ✅ Key Takeaways (for Final Abstract)
+## ✅ Key Takeaways
 
 - Fully-functional issue tracker with JWT-based authentication
 - Clean React UI; secure Spring Boot backend
-- Role-based access and database entity management
-- Comprehensive tests & manual verification covered
 
 ---
 
