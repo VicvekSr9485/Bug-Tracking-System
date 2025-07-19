@@ -111,9 +111,8 @@ cd Bug-Tracking-System
 
 ## 📄 Docs & Architecture
 
-- 🔍 Detailed backend architecture: `BACKEND_OVERVIEW.md`  
-- 📜 API specification: `API_DOCUMENTATION.md`  
-- ⚙️ (Optional) API UI: Integrate Swagger or OpenAPI
+- 🔍 Detailed backend architecture: [BACKEND_OVERVIEW.md](backend/BACKEND_OVERVIEW.md)
+- 📜 API specification: [API_DOCUMENTATION.md](backend/API_DOCUMENTATION.md)
 
 ---
 
