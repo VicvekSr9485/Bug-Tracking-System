@@ -77,7 +77,7 @@ cd Bug-Tracking-System
    npm install
    npm start
    ```
-   The React app launches at: **http://localhost:3000**
+   The React app launches at: **http://localhost:5173**
 
 3. **Login/Register**
    - Use the form to sign up or log in.
